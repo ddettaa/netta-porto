@@ -40,12 +40,12 @@ export function Header() {
 
   return (
     <header
-      className={cn("sticky top-0 z-50 w-full border-transparent border-b", {
+      className={cn("sticky top-0 z-50 w-full border-border border-b", {
         "border-border bg-background/95 backdrop-blur-lg supports-[backdrop-filter]:bg-background/50":
           scrolled,
       })}
     >
-      <nav className="mx-auto flex h-14 w-full max-w-5xl items-center justify-between px-4 text-lg">
+      <nav className="mx-auto flex h-14 w-full items-center justify-between px-6 text-lg">
         <div className="rounded-md p-2 hover:bg-accent">
           <WordmarkIcon className="h-4" />
         </div>
