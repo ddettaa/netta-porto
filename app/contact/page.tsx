@@ -68,7 +68,7 @@ function ContactSection({ setHoveredLink }: { setHoveredLink: (link: string | nu
         <div className="mb-6 sm:mb-10 md:mb-12 lg:mb-16 relative z-[1]">
           <a 
             href="mailto:adityarahmann15@gmail.com" 
-            className="relative inline-block text-white hover:text-gray-300 transition-colors text-sm sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold mb-4 z-[1] break-all sm:break-normal after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-white after:z-[1] after:transition-all after:duration-300 hover:after:w-full"
+            className="relative inline-block text-white hover:text-[#FFDD18] transition-colors text-sm sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold mb-4 z-[1] break-all sm:break-normal after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-white after:z-[1] after:transition-all after:duration-300 hover:after:w-full"
             onMouseEnter={() => setHoveredLink('mailto:adityarahmann15@gmail.com')}
             onMouseLeave={() => setHoveredLink(null)}
           >adityarahmann15@gmail.com</a>

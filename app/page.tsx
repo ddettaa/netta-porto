@@ -42,7 +42,7 @@ export default function Home() {
             {({ effective, toggleTheme }) => (
               <span
                 onClick={() => toggleTheme(getNextTheme(effective))}
-                className="cursor-pointer hover:opacity-80 transition-opacity"
+                className="cursor-pointer hover:text-blue-600 transition-colors"
               >
                 Aditya Rahman
               </span>
