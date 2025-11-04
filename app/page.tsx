@@ -10,11 +10,10 @@ export default function Home() {
   return (
     <CursorProvider>
       <Cursor />
-      <CursorFollow>User</CursorFollow>
-      <main className="min h-screen">
+      <CursorFollow>Hello</CursorFollow>
+      <main className="">
         <Header />
         <HeroSection />
-        <ProjectsSection />
       </main>
     </CursorProvider>
   );
@@ -50,14 +49,6 @@ export default function Home() {
             )}
           </ThemeToggler>
         </h1>
-      </div>
-    );
-  }
-
-  function ProjectsSection() {
-    return (
-      <div>
-        <h1>Projects</h1>
       </div>
     );
   }

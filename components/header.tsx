@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
 import { createPortal } from "react-dom";
+import { usePathname } from "next/navigation";
 import { WordmarkIcon } from "@/components/logo";
 import { MenuToggleIcon } from "@/components/menu-toggle-icon";
-import { ThemeTogglerButton } from "@/components/animate-ui/components/buttons/theme-toggler";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { useScroll } from "@/hooks/use-scroll";
 import { cn } from "@/lib/utils";
@@ -11,19 +11,21 @@ import { cn } from "@/lib/utils";
 export function Header() {
   const [open, setOpen] = React.useState(false);
   const scrolled = useScroll(10);
+  const pathname = usePathname();
+  const isContactPage = pathname === "/contact";
 
   const links = [
     {
       label: "Home",
-      href: "#",
+      href: "/",
     },
     {
       label: "Projects",
-      href: "#",
+      href: "/projects",
     },
     {
       label: "Contact",
-      href: "#",
+      href: "/contact",
     },
   ];
 
@@ -40,19 +42,26 @@ export function Header() {
 
   return (
     <header
-      className={cn("sticky top-0 z-50 w-full border-border border-b", {
-        "border-border bg-background/95 backdrop-blur-lg supports-[backdrop-filter]:bg-background/50":
+      className={cn("top-0 z-50 w-full mb-4", {
           scrolled,
       })}
     >
-      <nav className="mx-auto flex h-14 w-full items-center justify-between px-6 text-lg">
-        <div className="rounded-md p-2 hover:bg-accent">
-          <WordmarkIcon className="h-4" />
+      <nav className="mx-auto flex h-14 w-full items-center justify-between px-6 text-lg relative">
+        <div className={cn("absolute bottom-0 left-6 right-6 h-1 rounded-r-full", {
+          "bg-border": !isContactPage,
+          "bg-white": isContactPage,
+        })}></div>
+        <div className="rounded-md p-2">
+          <WordmarkIcon className={cn("h-4", {
+            "text-white": isContactPage,
+          })} />
         </div>
         <div className="hidden items-center gap-2 md:flex">
           {links.map((link, i) => (
             <a
-              className={buttonVariants({ variant: "ghost" })}
+              className={cn(buttonVariants({ variant: "ghost" }), {
+                "text-white": isContactPage,
+              })}
               href={link.href}
               key={i}
             >
@@ -64,21 +73,27 @@ export function Header() {
           aria-controls="mobile-menu"
           aria-expanded={open}
           aria-label="Toggle menu"
-          className="md:hidden"
+          className={cn("md:hidden", {
+            "text-white": isContactPage,
+          })}
           onClick={() => setOpen(!open)}
           size="icon"
           variant="outline"
         >
-          <MenuToggleIcon className="size-5" duration={300} open={open} />
+          <MenuToggleIcon className={cn("size-5", {
+            "text-white": isContactPage,
+          })} duration={300} open={open} />
         </Button>
       </nav>
       <MobileMenu className="flex flex-col justify-between gap-2" open={open}>
         <div className="grid gap-y-2">
           {links.map((link) => (
             <a
-              className={buttonVariants({
+              className={cn(buttonVariants({
                 variant: "ghost",
                 className: "justify-start",
+              }), {
+                "text-white": isContactPage,
               })}
               href={link.href}
               key={link.label}
