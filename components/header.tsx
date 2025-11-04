@@ -73,8 +73,9 @@ export function Header() {
           aria-controls="mobile-menu"
           aria-expanded={open}
           aria-label="Toggle menu"
-          className={cn("md:hidden", {
-            "text-white": isContactPage,
+          className={cn("md:hidden bg-transparent hover:bg-transparent", {
+            "text-white border-white": isContactPage,
+            "border-border": !isContactPage,
           })}
           onClick={() => setOpen(!open)}
           size="icon"
