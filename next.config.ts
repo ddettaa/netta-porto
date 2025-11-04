@@ -3,7 +3,6 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   // Optimize for faster development
   reactStrictMode: true,
-  swcMinify: true,
   // Faster refresh
   onDemandEntries: {
     maxInactiveAge: 60 * 1000,
