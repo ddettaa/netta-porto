@@ -13,7 +13,7 @@ export function Header() {
   const scrolled = useScroll(10);
   const pathname = usePathname();
   const isContactPage = pathname === "/contact";
-
+  const isProjectsPage = pathname === "/projects";
   const links = [
     {
       label: "Home",
@@ -48,19 +48,19 @@ export function Header() {
     >
       <nav className="mx-auto flex h-14 w-full items-center justify-between px-6 text-lg relative">
         <div className={cn("absolute bottom-0 left-6 right-6 h-1 rounded-r-full", {
-          "bg-border": !isContactPage,
-          "bg-white": isContactPage,
+          "bg-border": !isContactPage && !isProjectsPage,
+          "bg-white": isContactPage || isProjectsPage,
         })}></div>
         <div className="rounded-md p-2">
           <WordmarkIcon className={cn("h-4", {
-            "text-white": isContactPage,
+            "text-white": isContactPage || isProjectsPage,
           })} />
         </div>
         <div className="hidden items-center gap-2 md:flex">
           {links.map((link, i) => (
             <a
               className={cn(buttonVariants({ variant: "ghost" }), {
-                "text-white": isContactPage,
+                "text-white": isContactPage || isProjectsPage,
               })}
               href={link.href}
               key={i}
@@ -74,15 +74,15 @@ export function Header() {
           aria-expanded={open}
           aria-label="Toggle menu"
           className={cn("md:hidden bg-transparent hover:bg-transparent", {
-            "text-white border-white": isContactPage,
-            "border-border": !isContactPage,
+            "text-white border-white": isContactPage || isProjectsPage,
+            "border-border": !isContactPage && !isProjectsPage,
           })}
           onClick={() => setOpen(!open)}
           size="icon"
           variant="outline"
         >
           <MenuToggleIcon className={cn("size-5", {
-            "text-white": isContactPage,
+            "text-white": isContactPage || isProjectsPage,
           })} duration={300} open={open} />
         </Button>
       </nav>
@@ -94,7 +94,7 @@ export function Header() {
                 variant: "ghost",
                 className: "justify-start",
               }), {
-                "text-white": isContactPage,
+                "text-white": isContactPage || isProjectsPage,
               })}
               href={link.href}
               key={link.label}
