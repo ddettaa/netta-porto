@@ -38,11 +38,11 @@ export default function Contact() {
     <CursorProvider>
       <Cursor />
       <CursorFollow>{cursorText}</CursorFollow>
-      <main className="bg-[#005CEF] relative">
+      <main className="bg-[#005CEF]">
         <Header />
         <ContactSection setHoveredLink={setHoveredLink} />
         <div 
-          className="fixed bottom-0 left-170 top-100 right-0 w-400 h-400 bg-yellow-400 rounded-full z-[5] transition-all duration-300 ease-out"
+          className="fixed bottom-0 left-240 top-100 right-0 w-400 h-400 bg-yellow-400 rounded-full z-[5] transition-all duration-300 ease-out"
           style={{
             transform: `translateY(${-scrollY * 0.5}px) rotate(${scrollY * 0.1}deg) scale(${1 + Math.sin(scrollY * 0.01) * 0.2})`,
           }}
@@ -55,7 +55,7 @@ export default function Contact() {
 function ContactSection({ setHoveredLink }: { setHoveredLink: (link: string | null) => void }) {
     return (
       <div className="px-6 py-12 relative z-[1]">
-        <h1 className="text-8xl font-bold text-white mb-8">Contact Me</h1>
+        <h1 className="text-9xl font-bold text-white mb-8">Contact Me.</h1>
         <div className="mb-12 relative z-[1]">
           <a 
             href="mailto:adityarahmann15@gmail.com" 
