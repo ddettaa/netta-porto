@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Cursor, CursorFollow, CursorProvider } from "@/components/animate-ui/components/animate/cursor";
 import { Header } from "@/components/header";
 import { ThemeToggler } from "@/components/animate-ui/primitives/effects/theme-toggler";
@@ -84,11 +84,23 @@ export default function Home() {
             }}
           >
             {({ effective, toggleTheme }) => (
-              <span
-                onClick={() => toggleTheme(getNextTheme(effective))}
-                className="cursor-pointer hover:text-blue-600 transition-colors"
-              >
-                Aditya Rahman
+              <span className="relative inline-block group">
+                <span
+                  onClick={() => toggleTheme(getNextTheme(effective))}
+                  className={`cursor-pointer hover:text-${resolvedTheme === 'dark' ? 'red' : 'blue'}-600 transition-all duration-300 relative inline-block hover:scale-105`}
+                >
+                  Aditya Rahman
+                  {/* Subtle underline indicator */}
+                  <span className={`absolute -bottom-1 left-0 w-full h-0.5 bg-${resolvedTheme === 'dark' ? 'red' : 'blue'}-600/30 group-hover:bg-${resolvedTheme === 'dark' ? 'red' : 'blue'}-600 transition-all duration-300`}></span>
+                </span>
+                {/* Minimalist floating tooltip - positioned above "R" in Rahman */}
+                <span className="absolute -top-15 left-[50%] -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none">
+                  <span className={`relative inline-block bg-gradient-to-r from-${resolvedTheme === 'dark' ? 'red' : 'blue'}-600 to-${resolvedTheme === 'dark' ? 'red' : 'blue'}-500 text-white text-xs font-medium px-4 py-1.5 rounded-full shadow-lg backdrop-blur-sm animate-float`}>
+                    Click me
+                    {/* Small arrow pointing down */}
+                    <span className={`absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-${resolvedTheme === 'dark' ? 'red' : 'blue'}-600 rotate-45`}></span>
+                  </span>
+                </span>
               </span>
             )}
           </ThemeToggler>
@@ -208,34 +220,33 @@ export default function Home() {
               {/* Accordion Content */}
               <div 
                 className={`overflow-hidden transition-all duration-500 ease-in-out ${
-                  openIndex === index ? 'max-h-[900px] opacity-100' : 'max-h-0 opacity-0'
+                  openIndex === index ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
                 }`}
               >
-                <div className="py-8 lg:py-10">
+                <div className="py-6 sm:py-8 lg:py-10">
                   {/* Single container for images and detail */}
-                  <div className="grid grid-cols-1 lg:grid-cols-2 items-stretch">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-0 items-stretch">
                     {/* Images Container - Only 1 image */}
-                    <div>
-                      <div className="w-full aspect-square rounded-lg lg:rounded-l-lg lg:rounded-r-none overflow-hidden bg-gray-100 dark:bg-gray-800 shadow-md hover:shadow-lg transition-shadow duration-300">
+                    <div className="w-full">
+                      <div className="w-full aspect-video rounded-lg lg:rounded-l-lg lg:rounded-r-none overflow-hidden bg-gray-100 dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-300">
                         <img 
                           src={project.images[0]} 
                           alt={project.name}
-                          className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300"
-                          style={{ objectPosition: 'center' }}
+                          className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500"
                         />
                       </div>
                     </div>
 
                     {/* Description Box - Matches height of images container */}
-                    <div className="flex">
-                      <div className={`bg-red-600 rounded-lg lg:rounded-r-lg lg:rounded-l-none text-white w-full flex flex-col justify-between p-6 sm:p-8 lg:p-10 xl:p-12 shadow-lg h-full`}>
-                        <div className="flex-1 mb-6 lg:mb-8">
-                          <p className="text-base sm:text-lg lg:text-xl leading-relaxed font-normal">
+                    <div className="w-full flex">
+                      <div className={`bg-red-600 rounded-lg lg:rounded-r-lg lg:rounded-l-none text-white w-full flex flex-col justify-between p-6 sm:p-8 lg:p-10 shadow-lg`}>
+                        <div className="flex-1 flex items-center">
+                          <p className="text-sm sm:text-base lg:text-lg leading-relaxed font-normal">
                             {project.detail}
                           </p>
                         </div>
-                        <div className="pt-4 lg:pt-6 border-t border-red-500/30">
-                          <button className={`bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 px-8 lg:py-4 lg:px-10 rounded-lg text-base lg:text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg w-full sm:w-auto`}>
+                        <div className="pt-6 mt-6 border-t border-red-500/30">
+                          <button className={`bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 px-6 lg:py-3.5 lg:px-8 rounded-lg text-sm lg:text-base transition-all duration-300 hover:scale-105 hover:shadow-xl w-full sm:w-auto`}>
                             View Project
                           </button>
                         </div>

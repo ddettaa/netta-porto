@@ -120,3 +120,18 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Custom floating animation for tooltip */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.animate-float {
+  animation: float 2s ease-in-out infinite;
+}
+
