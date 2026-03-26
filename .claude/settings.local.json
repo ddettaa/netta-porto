@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh api:*)",
+      "Bash(gh repo:*)",
+      "WebFetch(domain:api.github.com)",
+      "Bash(npx next:*)",
+      "Bash(where wkhtmltopdf:*)",
+      "Bash(where chrome:*)",
+      "Bash(where msedge:*)",
+      "Read(//c/Program Files \\(x86\\)/Microsoft/Edge/Application/**)",
+      "Read(//c/Program Files/Google/Chrome/Application/**)",
+      "Bash(\"/c/Program Files \\(x86\\)/Microsoft/Edge/Application/msedge.exe\" --headless --disable-gpu --print-to-pdf=\"C:/laragon/www/ddettaa/public/resume.pdf\" --no-margins \"file:///C:/laragon/www/ddettaa/public/resume.pdf.html\" 2>&1)"
+    ]
+  }
+}

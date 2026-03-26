@@ -27,6 +27,10 @@ export function Header() {
       label: "Contact",
       href: "/contact",
     },
+    {
+      label: "Resume",
+      href: "/resume.pdf",
+    },
   ];
 
   React.useEffect(() => {
