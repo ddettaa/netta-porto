@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Aditya Rahman - Resume</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 0.6in;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333333;
+      line-height: 1.45;
+      font-size: 10pt;
+      margin: 0;
+      padding: 0;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    .name {
+      font-size: 22pt;
+      font-weight: 700;
+      color: #111111;
+      margin: 0 0 5px 0;
+      letter-spacing: -0.5px;
+    }
+    .contact {
+      font-size: 9pt;
+      color: #555555;
+      margin: 0;
+    }
+    .contact a {
+      color: #2563eb;
+      text-decoration: none;
+    }
+    .contact a:hover {
+      text-decoration: underline;
+    }
+    .section-title {
+      font-size: 11.5pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #111111;
+      border-bottom: 1px solid #e5e7eb;
+      padding-bottom: 2px;
+      margin-top: 15px;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+    .summary-text {
+      margin: 0;
+      font-size: 9.5pt;
+      color: #4b5563;
+      text-align: justify;
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 6px 15px;
+      font-size: 9.5pt;
+      margin-top: 3px;
+    }
+    .skills-category {
+      font-weight: 700;
+      color: #374151;
+      min-width: 130px;
+    }
+    .skills-list {
+      color: #4b5563;
+    }
+    .project-item {
+      margin-bottom: 12px;
+      page-break-inside: avoid;
+    }
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 2px;
+    }
+    .project-name {
+      font-size: 10pt;
+      font-weight: 700;
+      color: #111111;
+    }
+    .project-name a {
+      color: #111111;
+      text-decoration: none;
+    }
+    .project-name a:hover {
+      color: #2563eb;
+    }
+    .project-date {
+      font-size: 9pt;
+      color: #6b7280;
+      font-weight: 500;
+    }
+    .project-tech {
+      font-size: 8.5pt;
+      color: #2563eb;
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+    .project-desc {
+      margin: 0;
+      padding-left: 15px;
+      font-size: 9pt;
+      color: #4b5563;
+    }
+    .project-desc li {
+      margin-bottom: 1.5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1 class="name">Aditya Rahman</h1>
+    <p class="contact">
+      <a href="mailto:adityarahmann15@gmail.com">adityarahmann15@gmail.com</a> &nbsp;|&nbsp; 
+      <a href="https://github.com/ddettaa" target="_blank">github.com/ddettaa</a> &nbsp;|&nbsp; 
+      <a href="https://linkedin.com/in/2ddettaa" target="_blank">linkedin.com/in/2ddettaa</a>
+    </p>
+  </div>
+
+  <div class="section-title">Summary</div>
+  <p class="summary-text">
+    Backend Developer and AI Enthusiast with hands-on experience building full-stack web applications, Web3 decentralized apps, and AI-powered systems. Proficient in PHP, Laravel, Golang, TypeScript, and Next.js. Experienced in designing scalable backend systems with REST APIs, orchestrating multi-agent systems, and fine-tuning open-source LLMs.
+  </p>
+
+  <div class="section-title">Technical Skills</div>
+  <div class="skills-grid">
+    <div class="skills-category">Languages</div>
+    <div class="skills-list">PHP, Go (Golang), TypeScript, JavaScript, Java, C++, Dart</div>
+
+    <div class="skills-category">Frameworks</div>
+    <div class="skills-list">Laravel, Filament, Next.js, React, Flutter</div>
+
+    <div class="skills-category">Databases</div>
+    <div class="skills-list">MySQL, PostgreSQL, Redis</div>
+
+    <div class="skills-category">Tools</div>
+    <div class="skills-list">Git, GitHub, Vercel, REST API, Postman, Docker</div>
+
+    <div class="skills-category">AI & Machine Learning</div>
+    <div class="skills-list">LLM Fine-Tuning (LoRA), RAG Architecture, AI Agents, Prompt Engineering, PyTorch</div>
+
+    <div class="skills-category">Web3</div>
+    <div class="skills-list">Farcaster, Base (L2), Onchain Development, Irys</div>
+  </div>
+
+  <div class="section-title">Projects</div>
+
+  <div class="project-item">
+    <div class="project-header">
+      <span class="project-name"><a href="https://lokabuild.cloud/" target="_blank">LokaBuild Cloud</a></span>
+      <span class="project-date">2026</span>
+    </div>
+    <div class="project-tech">Generative AI • Next.js • TypeScript • AI/ML</div>
+    <ul class="project-desc">
+      <li>Created an AI-powered website builder that generates professional company profile websites instantly.</li>
+      <li>Implemented natural language generation to automatically build responsive layouts and copy based on business descriptions.</li>
+      <li>Designed backend integration APIs and managed cloud deployments to deliver live user websites instantly.</li>
+    </ul>
+  </div>
+
+  <div class="project-item">
+    <div class="project-header">
+      <span class="project-name"><a href="https://github.com/ddettaa/emotionsense-ai" target="_blank">EmotionSense AI</a></span>
+      <span class="project-date">2025</span>
+    </div>
+    <div class="project-tech">AI/ML • TypeScript • Next.js</div>
+    <ul class="project-desc">
+      <li>Built an AI-powered emotion detection and analysis application using TypeScript.</li>
+      <li>Implemented machine learning models to classify human emotions from various inputs.</li>
+      <li>Designed and developed the full responsive frontend user interface with Next.js.</li>
+    </ul>
+  </div>
+
+  <div class="project-item">
+    <div class="project-header">
+      <span class="project-name"><a href="https://farchess.vercel.app" target="_blank">Farchess – Onchain Chess on Farcaster</a></span>
+      <span class="project-date">2025</span>
+    </div>
+    <div class="project-tech">Web3 • TypeScript • Farcaster • Base</div>
+    <ul class="project-desc">
+      <li>Developed a decentralized chess game running onchain on Base blockchain (Layer 2).</li>
+      <li>Integrated Farcaster social protocol for user authentication, profile fetching, and matchmaking.</li>
+      <li>Deployed and maintained the live application on Vercel with responsive scaling.</li>
+    </ul>
+  </div>
+
+  <div class="project-item">
+    <div class="project-header">
+      <span class="project-name"><a href="https://wrapcast-tau.vercel.app" target="_blank">Wrapcast – Wrapped Farcaster 2025</a></span>
+      <span class="project-date">2025</span>
+    </div>
+    <div class="project-tech">Web3 • TypeScript • Next.js</div>
+    <ul class="project-desc">
+      <li>Created a year-in-review experience for Farcaster users to visualize activity and engagement metrics.</li>
+      <li>Built responsive data visualization components to display user statistics, top casts, and charts.</li>
+      <li>Handled API integration with Farcaster protocol to fetch and process user metrics efficiently.</li>
+    </ul>
+  </div>
+
+  <div class="project-item">
+    <div class="project-header">
+      <span class="project-name"><a href="https://github.com/ddettaa/SIMRS-PEMERIKSAAN" target="_blank">SIMRS Pemeriksaan – Hospital Information System</a></span>
+      <span class="project-date">2024 – 2025</span>
+    </div>
+    <div class="project-tech">Full Stack • PHP • Laravel • Filament • Flutter</div>
+    <ul class="project-desc">
+      <li>Developed a full-stack hospital examination management system with separate frontend, API, mobile app, and admin panel.</li>
+      <li>Built the backend REST API with Laravel for patient data management and examination workflows.</li>
+      <li>Created the admin dashboard using Laravel Filament for hospital staff operations.</li>
+      <li>Developed a cross-platform mobile application with Flutter for on-the-go access.</li>
+    </ul>
+  </div>
+
+  <div class="project-item">
+    <div class="project-header">
+      <span class="project-name"><a href="https://irys-checker-one.vercel.app" target="_blank">Irys Checker</a></span>
+      <span class="project-date">2025</span>
+    </div>
+    <div class="project-tech">Web3 • TypeScript • Irys</div>
+    <ul class="project-desc">
+      <li>Built a utility tool for checking and verifying data transactions on the Irys decentralized storage network.</li>
+      <li>Deployed as a web application on Vercel for public access.</li>
+    </ul>
+  </div>
+
+  <div class="project-item">
+    <div class="project-header">
+      <span class="project-name"><a href="https://portofolio-ddettaas-projects.vercel.app" target="_blank">Netta Porto – Portfolio Website</a></span>
+      <span class="project-date">2025</span>
+    </div>
+    <div class="project-tech">Frontend • TypeScript • Next.js</div>
+    <ul class="project-desc">
+      <li>Designed and developed a modern portfolio website with clean UI and responsive layout.</li>
+      <li>Implemented with Next.js and TypeScript, deployed on Vercel.</li>
+    </ul>
+  </div>
+
+  <div class="project-item">
+    <div class="project-header">
+      <span class="project-name"><a href="https://github.com/ddettaa/Cafe-Java" target="_blank">Cafe Java – Cafe Management App</a></span>
+      <span class="project-date">2024</span>
+    </div>
+    <div class="project-tech">Backend • Java • OOP</div>
+    <ul class="project-desc">
+      <li>Built a cafe management application handling ordering, menu management, and operations.</li>
+      <li>Applied object-oriented programming principles for clean, maintainable architecture.</li>
+    </ul>
+  </div>
+
+  <div class="project-item">
+    <div class="project-header">
+      <span class="project-name"><a href="https://github.com/ddettaa/UAS-MetNum" target="_blank">UAS MetNum – Numerical Methods</a></span>
+      <span class="project-date">2024</span>
+    </div>
+    <div class="project-tech">C++ • Numerical Computation</div>
+    <ul class="project-desc">
+      <li>Implemented various numerical computation algorithms in C++ for mathematical problem solving.</li>
+    </ul>
+  </div>
+</body>
+</html>

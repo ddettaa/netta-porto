@@ -8,6 +8,7 @@ import { useTheme } from "next-themes";
 import type { ThemeSelection } from "@/components/animate-ui/primitives/effects/theme-toggler";
 import DynamicText from "@/components/kokonutui/dynamic-text";
 import { ChevronDown } from "lucide-react";
+import AsciiWave from "@/components/lightswind/ascii-wave";
 
 export default function Home() {
   const { theme, resolvedTheme, setTheme } = useTheme();
@@ -70,8 +71,8 @@ export default function Home() {
     };
 
     return (
-      <div className="px-4 py-6 sm:px-6 sm:py-12 md:px-8 md:py-16 lg:px-12 lg:py-75 relative z-[1]">
-        <h1 className="text-7xl font-bold mb-8 text-center">
+      <div className="min-h-[calc(100vh-80px)] flex items-center justify-center px-4 py-12 sm:px-6 md:px-8 lg:px-12 relative z-[1]">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-8 text-center w-full">
           Hello, I'm{' '}
           <ThemeToggler
             theme={theme as ThemeSelection}
@@ -124,26 +125,37 @@ export default function Home() {
     ];
     
     return (
-      <div className={`${resolvedTheme === 'light' ? 'bg-blue-600' : 'bg-red-600'} px-4 py-6 sm:px-6 sm:py-12 md:px-8 md:py-16 lg:px-12 lg:py-75 relative z-[1] transition-colors duration-700 ease-in-out`}>
-        <h1 className="text-7xl font-bold mb-8 text-center text-white transition-all duration-700 ease-in-out">
-        <span className={`${resolvedTheme === 'light' ? 'text-blue-900' : 'text-red-900'} transition-colors duration-700 ease-in-out inline-flex items-center`}>
-          <DynamicText 
-            texts={introTexts}
-            className={`${resolvedTheme === 'light' ? 'text-blue-900' : 'text-red-900'} text-7xl font-bold`}
-            interval={500}
-            showDot={false}
+      <div className={`${resolvedTheme === 'light' ? 'bg-blue-600' : 'bg-red-600'} px-4 py-12 sm:px-6 sm:py-16 md:px-8 md:py-24 lg:px-12 lg:py-48 relative z-[1] transition-colors duration-700 ease-in-out overflow-hidden`}>
+        {/* Background ASCII wave */}
+        <div className="absolute inset-0 z-0 opacity-45 pointer-events-none">
+          <AsciiWave 
+            color="#ffffff" 
+            speed={0.3}
           />
-          &nbsp;
-        </span>
-         <span className="transition-all duration-700 ease-in-out">
-           {resolvedTheme === 'light' ? 'as a BackEnd Developer.' : 'as a UI/UX Designer.'}
-         </span>
-        </h1>
-        <p className="text-lg text-white text-center transition-all duration-700 ease-in-out">
-        {resolvedTheme === 'light' 
-          ? 'In Backend Development, I specialize with PHP, Laravel, and Golang.'
-          : 'In UI/UX Design, I specialize with Figma, Canva, and Abode.'}
-        </p>
+        </div>
+
+        {/* Foreground Content */}
+        <div className="relative z-10">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-8 text-center text-white transition-all duration-700 ease-in-out flex flex-col items-center justify-center gap-2">
+          <span className={`${resolvedTheme === 'light' ? 'text-blue-900' : 'text-red-900'} transition-colors duration-700 ease-in-out inline-flex items-center flex-wrap justify-center`}>
+            <DynamicText 
+              texts={introTexts}
+              className={`${resolvedTheme === 'light' ? 'text-blue-900' : 'text-red-900'} text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold`}
+              interval={500}
+              showDot={false}
+            />
+            &nbsp;
+          </span>
+           <span className="transition-all duration-700 ease-in-out">
+             {resolvedTheme === 'light' ? 'as a BackEnd Developer.' : 'as an AI Enthusiast.'}
+           </span>
+          </h1>
+          <p className="text-lg text-white text-center transition-all duration-700 ease-in-out">
+          {resolvedTheme === 'light' 
+            ? 'In Backend Development, I specialize with PHP, Laravel, and Golang.'
+            : 'In Artificial Intelligence, I specialize with Open Source Models, LLMs, and AI Agents.'}
+          </p>
+        </div>
       </div>
     );
   }
@@ -154,11 +166,12 @@ export default function Home() {
     const backendProjects = [
       { 
         description: "API & Server Development", 
-        name: "Sistem Rumah Sakit Bagian Pemeriksaan",
-        detail: "Sistem Rumah Sakit Bagian Pemeriksaan adalah sebuah sistem yang membantu dalam pemeriksaan pasien. Sistem ini membantu dalam pemeriksaan pasien dan pengelolaan data pasien.",
+        name: "SIMRS Examination System",
+        detail: "A hospital examination management system featuring a unified backend API, administrative dashboard, and cross-platform mobile application to streamline patient workflows and record management.",
         images: [
           "/Simrs.png",
-        ]
+        ],
+        link: "https://github.com/ddettaa/SIMRS-PEMERIKSAAN"
       },
       { 
         description: "Backend Development", 
@@ -166,31 +179,51 @@ export default function Home() {
         detail: "Scalable microservices architecture for payment processing. Handles millions of transactions with high availability and real-time monitoring.",
         images: [
           "/Sarlainv2.png",
-        ]
+        ],
+        link: "https://github.com/ddettaa/Farchess"
+      },
+      { 
+        description: "Generative AI Website Builder", 
+        name: "LokaBuild Cloud",
+        detail: "LokaBuild is an AI-powered website builder that generates professional company profile websites instantly. Users describe their business, and the platform automatically creates a responsive, ready-to-publish site without writing code.",
+        images: [
+          "/lokabuild.png",
+        ],
+        link: "https://lokabuild.cloud/"
       }
     ];
 
-    const uiuxProjects = [
+    const aiProjects = [
       { 
-        description: "UI/UX Design", 
-        name: "Burger Queen",
-        detail: "Burger Queen adalah sebuah aplikasi yang membantu dalam pembuatan burger. Aplikasi ini membantu dalam pembuatan burger dan pengelolaan data burger.",
+        description: "Looping Agents", 
+        name: "Nous Hermes",
+        detail: "Nous Hermes is a state-of-the-art open-source LLM series. This project involved fine-tuning Hermes on custom instruction datasets to improve reasoning and multi-turn conversation capabilities, achieving exceptional performance in benchmark tests.",
         images: [
-          "/Burger Queen.png",
-        ]
+          "/hermes.png",
+        ],
+        link: "https://hermes-agent.nousresearch.com/docs/"
       },
+      { 
+        description: "Autonomous AI Agent System", 
+        name: "OpenClaw Agent",
+        detail: "OpenClaw is a multi-agent framework designed to orchestrate complex reasoning workflows. By leveraging advanced tooling and task-planning interfaces, it coordinates multiple LLMs (like Hermes and Claude) to solve complex coding, analysis, and data tasks.",
+        images: [
+          "/openclaw.png",
+        ],
+        link: "https://docs.openclaw.ai/"
+      }
     ];
 
-    const projects = resolvedTheme === 'light' ? backendProjects : uiuxProjects;
-    const sectionTitle = resolvedTheme === 'light' ? "Project Backend." : "Project UI/UX.";
+    const projects = resolvedTheme === 'light' ? backendProjects : aiProjects;
+    const sectionTitle = resolvedTheme === 'light' ? "Project Backend." : "AI Agents";
 
     const toggleAccordion = (index: number) => {
       setOpenIndex(openIndex === index ? null : index);
     };
 
     return (
-      <div className="px-4 py-6 sm:px-6 sm:py-12 md:px-8 md:py-16 lg:px-12 lg:py-75 relative z-[1]">
-        <h1 className={`text-7xl font-bold mb-6 ${resolvedTheme === 'light' ? 'text-blue-600' : 'text-blue-600'} transition-colors duration-700 ease-in-out`}>
+      <div className="px-4 py-8 sm:px-6 sm:py-16 md:px-8 md:py-16 lg:px-12 lg:py-16 relative z-[1]">
+        <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 ${resolvedTheme === 'light' ? 'text-blue-600' : 'text-blue-600'} transition-colors duration-700 ease-in-out`}>
           {sectionTitle}
         </h1>
         
@@ -249,9 +282,14 @@ export default function Home() {
                           </p>
                         </div>
                         <div className="pt-6 mt-6 border-t border-red-500/30">
-                          <button className={`bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 px-6 lg:py-3.5 lg:px-8 rounded-lg text-sm lg:text-base transition-all duration-300 hover:scale-105 hover:shadow-xl w-full sm:w-auto`}>
+                          <a 
+                            href={project.link || "#"}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`inline-block text-center bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 px-6 lg:py-3.5 lg:px-8 rounded-lg text-sm lg:text-base transition-all duration-300 hover:scale-105 hover:shadow-xl w-full sm:w-auto`}
+                          >
                             View Project
-                          </button>
+                          </a>
                         </div>
                       </div>
                     </div>
@@ -271,46 +309,99 @@ export default function Home() {
   }
 
   function AboutSection({ resolvedTheme }: { resolvedTheme: 'light' | 'dark' }) {
-    const backendSkills = [
-      { name: "PHP / Laravel", level: 90 },
-      { name: "Golang", level: 75 },
-      { name: "JavaScript / TypeScript", level: 85 },
-      { name: "MySQL / PostgreSQL", level: 80 },
-      { name: "REST API Design", level: 85 },
-      { name: "Git & DevOps", level: 70 },
-    ];
-
-    const designSkills = [
-      { name: "Figma", level: 90 },
-      { name: "UI Design", level: 85 },
-      { name: "UX Research", level: 75 },
-      { name: "Prototyping", level: 80 },
-      { name: "Design Systems", level: 75 },
-      { name: "Canva / Adobe", level: 80 },
-    ];
-
-    const skills = resolvedTheme === 'light' ? backendSkills : designSkills;
     const isLight = resolvedTheme === 'light';
 
+    const aiExpertise = [
+      {
+        title: "LLMs",
+        desc: "Supercharging open-source model reasoning and conversation capabilities.",
+        tech: ["Hermes", "Llama 3", "LoRA/QLoRA", "HuggingFace"],
+        color: "from-purple-500/10 to-indigo-500/10 dark:from-purple-500/20 dark:to-indigo-500/20",
+        borderColor: "hover:border-purple-500/50",
+        textColor: "text-purple-600 dark:text-purple-400"
+      },
+      {
+        title: "Agentic Workflows",
+        desc: "Orchestrating autonomous multi-agent task execution and tool integration.",
+        tech: ["CrewAI", "LangGraph", "Tool Calling", "Autogen"],
+        color: "from-blue-500/10 to-cyan-500/10 dark:from-blue-500/20 dark:to-cyan-500/20",
+        borderColor: "hover:border-blue-500/50",
+        textColor: "text-blue-600 dark:text-blue-400"
+      },
+      {
+        title: "RAG & Vector Search",
+        desc: "Building semantic search engines and knowledge-retrieval systems.",
+        tech: ["Pgvector", "ChromaDB", "Semantic Search", "Hybrid Search"],
+        color: "from-emerald-500/10 to-teal-500/10 dark:from-emerald-500/20 dark:to-teal-500/20",
+        borderColor: "hover:border-emerald-500/50",
+        textColor: "text-emerald-600 dark:text-emerald-400"
+      },
+      {
+        title: "Deep Learning Foundations",
+        desc: "Designing neural networks, custom training loops, and optimizing pipelines.",
+        tech: ["PyTorch", "Transformers", "Neural Networks", "TensorFlow"],
+        color: "from-rose-500/10 to-orange-500/10 dark:from-rose-500/20 dark:to-orange-500/20",
+        borderColor: "hover:border-rose-500/50",
+        textColor: "text-rose-600 dark:text-rose-400"
+      }
+    ];
+
+    const backendExpertise = [
+      {
+        title: "API Development",
+        desc: "Designing high-performance, robust RESTful APIs with clean design patterns.",
+        tech: ["PHP/Laravel", "Golang", "REST APIs", "gRPC"],
+        color: "from-blue-500/10 to-indigo-500/10 dark:from-blue-500/20 dark:to-indigo-500/20",
+        borderColor: "hover:border-blue-500/50",
+        textColor: "text-blue-600 dark:text-blue-400"
+      },
+      {
+        title: "Database Management",
+        desc: "Structuring schema models, optimizations, and caching strategies.",
+        tech: ["MySQL", "PostgreSQL", "Redis", "Query Optimization"],
+        color: "from-emerald-500/10 to-teal-500/10 dark:from-emerald-500/20 dark:to-teal-500/20",
+        borderColor: "hover:border-emerald-500/50",
+        textColor: "text-emerald-600 dark:text-emerald-400"
+      },
+      {
+        title: "Scalability & Microservices",
+        desc: "Breaking monoliths into distributed services with high availability.",
+        tech: ["Docker", "Go Channels", "Message Queues", "Event Sourcing"],
+        color: "from-amber-500/10 to-orange-500/10 dark:from-amber-500/20 dark:to-orange-500/20",
+        borderColor: "hover:border-amber-500/50",
+        textColor: "text-amber-600 dark:text-amber-400"
+      },
+      {
+        title: "DevOps & Workflows",
+        desc: "Automating delivery pipelines and deploying backend applications securely.",
+        tech: ["CI/CD", "GitHub Actions", "Linux Admin", "Git / Versioning"],
+        color: "from-purple-500/10 to-rose-500/10 dark:from-purple-500/20 dark:to-rose-500/20",
+        borderColor: "hover:border-purple-500/50",
+        textColor: "text-purple-600 dark:text-purple-400"
+      }
+    ];
+
+    const expertise = isLight ? backendExpertise : aiExpertise;
+
     return (
-      <div className="px-4 py-6 sm:px-6 sm:py-12 md:px-8 md:py-16 lg:px-12 lg:py-20 relative z-[1]">
+      <div className="px-4 py-12 sm:px-6 sm:py-16 md:px-8 md:py-20 lg:px-12 lg:py-24 relative z-[1]">
         <h1 className={`text-5xl sm:text-6xl md:text-7xl font-bold mb-4 transition-colors duration-700 ease-in-out ${isLight ? 'text-blue-600' : 'text-red-600'}`}>
           About Me.
         </h1>
         <div className={`h-0.5 mb-8 transition-colors duration-700 ease-in-out ${isLight ? 'bg-blue-600' : 'bg-red-600'}`}></div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
           {/* Bio */}
           <div>
             <p className="text-base sm:text-lg leading-relaxed text-foreground/80 mb-6">
               {isLight
                 ? "I'm a Backend Developer passionate about building robust, scalable server-side applications. I work primarily with PHP, Laravel, and Golang to create APIs and systems that power real-world solutions — from hospital management systems to Web3 decentralized apps."
-                : "I'm a UI/UX Designer who loves crafting intuitive and visually compelling digital experiences. With tools like Figma and a keen eye for detail, I design interfaces that are both beautiful and functional — from mobile apps to web platforms."}
+                : "I'm an AI Enthusiast dedicated to exploring the boundaries of artificial intelligence. I focus on building and fine-tuning open-source language models, orchestrating multi-agent systems, and implementing high-precision retrieval structures (RAG)."}
             </p>
             <p className="text-base sm:text-lg leading-relaxed text-foreground/80 mb-8">
               {isLight
                 ? "I believe in clean architecture, well-documented APIs, and code that's built to last. Currently exploring the intersection of Web3 and traditional backend systems."
-                : "I believe great design starts with understanding people. Every pixel has a purpose, and every interaction should feel natural and delightful."}
+                : "I believe AI should be autonomous yet reliable. By designing resilient RAG pipelines and custom LoRA adapters, I turn standard language models into domain experts that excel in specialized tasks."}
             </p>
             <a
               href="/projects"
@@ -320,25 +411,37 @@ export default function Home() {
             </a>
           </div>
 
-          {/* Skills */}
-          <div className="space-y-4">
+          {/* Grid of Expertise */}
+          <div>
             <h3 className="text-lg font-bold text-foreground/60 uppercase tracking-wider mb-6">
-              {isLight ? 'Technical Skills' : 'Design Skills'}
+              {isLight ? 'Backend Architecture' : 'AI Specializations'}
             </h3>
-            {skills.map((skill) => (
-              <div key={skill.name}>
-                <div className="flex justify-between mb-1">
-                  <span className="text-sm font-semibold text-foreground">{skill.name}</span>
-                  <span className="text-sm text-foreground/50">{skill.level}%</span>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {expertise.map((exp) => (
+                <div 
+                  key={exp.title}
+                  className={`group relative overflow-hidden rounded-xl border border-foreground/10 bg-gradient-to-br ${exp.color} p-5 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${exp.borderColor}`}
+                >
+                  <h4 className={`text-base font-bold mb-2 ${exp.textColor}`}>
+                    {exp.title}
+                  </h4>
+                  <p className="text-xs text-foreground/75 mb-4 leading-relaxed">
+                    {exp.desc}
+                  </p>
+                  <div className="flex flex-wrap gap-1.5 mt-auto">
+                    {exp.tech.map((t) => (
+                      <span 
+                        key={t}
+                        className="bg-foreground/5 text-foreground/70 text-[10px] font-semibold px-2 py-0.5 rounded-full border border-foreground/5"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-                <div className="w-full h-2 bg-foreground/10 rounded-full overflow-hidden">
-                  <div
-                    className={`h-full rounded-full transition-all duration-1000 ease-out ${isLight ? 'bg-blue-600' : 'bg-red-600'}`}
-                    style={{ width: `${skill.level}%` }}
-                  />
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>

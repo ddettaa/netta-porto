@@ -25,6 +25,15 @@ const projects: Project[] = [
     highlight: true,
   },
   {
+    name: "LokaBuild Cloud",
+    description: "Create professional company profile websites instantly with AI. No coding required — just describe your business and LokaBuild generates a ready-to-publish website.",
+    tech: ["TypeScript", "Next.js", "AI/ML"],
+    github: "https://github.com/ddettaa/lokabuild",
+    demo: "https://lokabuild.cloud/",
+    category: "backend",
+    highlight: true,
+  },
+  {
     name: "Farchess",
     description: "A decentralized chess game built on Farcaster, running onchain on Base. Play chess with your Farcaster friends with moves recorded on the blockchain.",
     tech: ["TypeScript", "Farcaster", "Base", "Onchain"],
