@@ -7,7 +7,7 @@ import { ThemeToggler } from "@/components/animate-ui/primitives/effects/theme-t
 import { useTheme } from "next-themes";
 import type { ThemeSelection } from "@/components/animate-ui/primitives/effects/theme-toggler";
 import DynamicText from "@/components/kokonutui/dynamic-text";
-import { ChevronDown, ExternalLink, Maximize2, X, Globe } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import AsciiWave from "@/components/lightswind/ascii-wave";
 
 export default function Home() {
@@ -162,7 +162,6 @@ export default function Home() {
 
   function ProjectSection({ resolvedTheme }: { resolvedTheme: 'light' | 'dark' }) {
     const [openIndex, setOpenIndex] = useState<number | null>(null);
-    const [selectedImage, setSelectedImage] = useState<{ src: string; title: string } | null>(null);
 
     const backendProjects = [
       { 
@@ -249,15 +248,6 @@ export default function Home() {
       setOpenIndex(openIndex === index ? null : index);
     };
 
-    const getDomainName = (urlStr: string, name: string) => {
-      try {
-        const url = new URL(urlStr);
-        return url.hostname.replace('www.', '');
-      } catch {
-        return name.toLowerCase().replace(/\s+/g, '') + '.app';
-      }
-    };
-
     return (
       <div className="px-4 py-8 sm:px-6 sm:py-16 md:px-8 md:py-16 lg:px-12 lg:py-16 relative z-[1]">
         <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 ${resolvedTheme === 'light' ? 'text-blue-600' : 'text-blue-600'} transition-colors duration-700 ease-in-out`}>
@@ -293,74 +283,40 @@ export default function Home() {
               {/* Accordion Content */}
               <div 
                 className={`overflow-hidden transition-all duration-500 ease-in-out ${
-                  openIndex === index ? 'max-h-[1200px] opacity-100' : 'max-h-0 opacity-0'
+                  openIndex === index ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
                 }`}
               >
                 <div className="py-6 sm:py-8 lg:py-10">
-                  {/* Grid for browser image card & description */}
-                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
-                    {/* Images Container - Browser Mockup */}
-                    <div className="w-full lg:col-span-7 flex flex-col">
-                      <div className="w-full h-full rounded-2xl overflow-hidden border border-black/10 dark:border-white/10 bg-slate-900 shadow-xl flex flex-col group transition-all duration-300 hover:shadow-2xl">
-                        {/* Browser Header Bar */}
-                        <div className="bg-slate-800/90 backdrop-blur-md px-4 py-2.5 flex items-center gap-3 border-b border-slate-700/50">
-                          <div className="flex items-center gap-1.5">
-                            <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                            <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                            <div className="w-3 h-3 rounded-full bg-green-500/80" />
-                          </div>
-                          <div className="flex-1 max-w-xs sm:max-w-md mx-auto bg-slate-950/60 rounded-md px-3 py-1 text-xs text-slate-400 flex items-center justify-between font-mono truncate border border-slate-800">
-                            <span className="truncate flex items-center gap-1.5">
-                              <Globe className="w-3 h-3 text-slate-500 flex-shrink-0" />
-                              {getDomainName(project.link, project.name)}
-                            </span>
-                          </div>
-                        </div>
-
-                        {/* Image Container */}
-                        <div 
-                          className="relative flex-1 min-h-[260px] sm:min-h-[320px] overflow-hidden cursor-pointer bg-slate-950 flex items-center justify-center"
-                          onClick={() => setSelectedImage({ src: project.images[0], title: project.name })}
-                        >
-                          <img 
-                            src={project.images[0]} 
-                            alt={project.name}
-                            className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
-                          />
-                          {/* Hover Overlay Badge */}
-                          <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
-                            <span className="inline-flex items-center gap-2 bg-white/90 text-slate-900 text-xs font-bold px-4 py-2 rounded-full shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                              <Maximize2 className="w-3.5 h-3.5" /> View Full Image
-                            </span>
-                          </div>
-                        </div>
+                  {/* Single container for images and detail */}
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-0 items-stretch">
+                    {/* Images Container */}
+                    <div className="w-full">
+                      <div className="w-full aspect-video rounded-lg lg:rounded-l-lg lg:rounded-r-none overflow-hidden bg-gray-100 dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-300">
+                        <img 
+                          src={project.images[0]} 
+                          alt={project.name}
+                          className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500"
+                        />
                       </div>
                     </div>
 
                     {/* Description Box */}
-                    <div className="w-full lg:col-span-5 flex">
-                      <div className={`${resolvedTheme === 'light' ? 'bg-blue-600' : 'bg-red-600'} rounded-2xl text-white w-full flex flex-col justify-between p-6 sm:p-8 lg:p-10 shadow-xl transition-colors duration-700`}>
-                        <div className="flex-1 flex flex-col justify-center">
-                          <span className="text-xs uppercase tracking-wider font-semibold opacity-75 mb-2">Project Overview</span>
+                    <div className="w-full flex">
+                      <div className={`bg-red-600 rounded-lg lg:rounded-r-lg lg:rounded-l-none text-white w-full flex flex-col justify-between p-6 sm:p-8 lg:p-10 shadow-lg`}>
+                        <div className="flex-1 flex items-center">
                           <p className="text-sm sm:text-base lg:text-lg leading-relaxed font-normal">
                             {project.detail}
                           </p>
                         </div>
-                        <div className="pt-6 mt-6 border-t border-white/20 flex flex-wrap items-center gap-3">
+                        <div className="pt-6 mt-6 border-t border-red-500/30">
                           <a 
                             href={project.link || "#"}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 px-6 rounded-xl text-sm lg:text-base transition-all duration-300 hover:scale-105 hover:shadow-xl flex-1 sm:flex-none text-center"
+                            className={`inline-block text-center bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 px-6 lg:py-3.5 lg:px-8 rounded-lg text-sm lg:text-base transition-all duration-300 hover:scale-105 hover:shadow-xl w-full sm:w-auto`}
                           >
-                            <ExternalLink className="w-4 h-4" /> View Project
+                            View Project
                           </a>
-                          <button
-                            onClick={() => setSelectedImage({ src: project.images[0], title: project.name })}
-                            className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white font-semibold py-3 px-4 rounded-xl text-sm transition-all duration-300 border border-white/20 cursor-pointer"
-                          >
-                            <Maximize2 className="w-4 h-4" /> Full Preview
-                          </button>
                         </div>
                       </div>
                     </div>
@@ -375,36 +331,6 @@ export default function Home() {
             </div>
           ))}
         </div>
-
-        {/* Full Image Lightbox Modal */}
-        {selectedImage && (
-          <div 
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-4 sm:p-8"
-            onClick={() => setSelectedImage(null)}
-          >
-            <div 
-              className="relative max-w-5xl w-full max-h-[90vh] bg-slate-900 rounded-2xl overflow-hidden shadow-2xl border border-slate-700 flex flex-col"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className="p-4 bg-slate-800/90 flex items-center justify-between border-b border-slate-700">
-                <h3 className="text-white font-bold text-lg">{selectedImage.title}</h3>
-                <button 
-                  onClick={() => setSelectedImage(null)}
-                  className="text-slate-400 hover:text-white bg-slate-700/50 hover:bg-slate-700 p-2 rounded-full transition-colors cursor-pointer"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              </div>
-              <div className="overflow-auto p-4 bg-slate-950 flex justify-center items-center max-h-[calc(90vh-65px)]">
-                <img 
-                  src={selectedImage.src} 
-                  alt={selectedImage.title}
-                  className="max-w-full h-auto object-contain rounded-lg shadow-lg"
-                />
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     );
   }
