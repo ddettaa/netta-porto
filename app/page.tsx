@@ -187,9 +187,36 @@ export default function Home() {
         name: "LokaBuild Cloud",
         detail: "LokaBuild is an AI-powered website builder that generates professional company profile websites instantly. Users describe their business, and the platform automatically creates a responsive, ready-to-publish site without writing code.",
         images: [
-          "/lokabuild.png",
+          "/Lokabuild.png",
         ],
         link: "https://lokabuild.cloud/"
+      },
+      {
+        description: "Farcaster On Chain Chess Game",
+        name: "Farchess",
+        detail: "Farchess is an on-chain chess game built on the Base blockchain (Layer 2) that allows users to play chess matches directly on the Farcaster social network. The game utilizes smart contracts to manage game state, moves, and results, ensuring transparency and security through decentralized technology.",
+        images: [
+          "/Farchess.png",
+        ],
+        link: "https://github.com/ddettaa/Farchess"
+      },
+      {
+        description: "Arc Hackathon Project",
+        name: "ArcGent",
+        detail: "Autonomous agents that listen to real-world signals — GitHub merges, API calls, flight delays — and automatically pay people with USDC based on AI reasoning.",
+        images: [
+          "/ArcHackathon.png",
+        ],
+        link: "https://github.com/ddettaa/ArcHackathon"
+      },
+      {
+        description:"Ethos Hacktathon Project",
+        name: "Minthos (Mint Via Ethos)",
+        detail:"Minthos is an on-chain NFT minting platform that allows users to mint NFTs directly on the Ethos Score. The platform utilizes smart contracts to manage game state, moves, and results, ensuring transparency and security through decentralized technology.",
+        images: [
+          "/Minthos.png",
+        ],
+        link: "https://x.com/utokiez/status/2014372012920287276?s=20"
       }
     ];
 
@@ -215,7 +242,7 @@ export default function Home() {
     ];
 
     const projects = resolvedTheme === 'light' ? backendProjects : aiProjects;
-    const sectionTitle = resolvedTheme === 'light' ? "Project Backend." : "AI Agents";
+    const sectionTitle = resolvedTheme === 'light' ? "Projects" : "Interests";
 
     const toggleAccordion = (index: number) => {
       setOpenIndex(openIndex === index ? null : index);
